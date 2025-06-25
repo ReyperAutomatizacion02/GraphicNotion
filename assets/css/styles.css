@@ -1,0 +1,218 @@
+/* styles.css - Estilos extraídos de graphic.html */
+body {
+    font-family: 'Inter', sans-serif;
+}
+#canvas-container {
+    cursor: grab;
+    background-color: #f3f4f6;
+    background-image: linear-gradient(90deg, #e5e7eb 1px, transparent 1px),
+                      linear-gradient(180deg, #e5e7eb 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+body.dark #canvas-container, .dark #canvas-container {
+    background-color: #111827 !important;
+    background-image: linear-gradient(90deg, #23293a 1px, transparent 1px),
+                      linear-gradient(180deg, #23293a 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+#canvas-transformer {
+    transform-origin: 0 0;
+}
+.db-node {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: grab;
+}
+.db-node:active {
+    cursor: grabbing;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+    transform: scale(1.02);
+    z-index: 50;
+}
+.relation-line {
+    transition: stroke-width 0.2s ease, stroke 0.2s ease;
+}
+.relation-line.highlight {
+    stroke-width: 4px !important;
+}
+.handle {
+    opacity: 1 !important;
+    cursor: grab;
+    transition: opacity 0.2s;
+}
+.handle:active {
+    cursor: grabbing;
+}
+#sidebar {
+    transition: margin-left 0.3s ease-in-out;
+}
+#app.sidebar-collapsed #sidebar {
+    margin-left: -18rem;
+}
+#show-sidebar-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+#app.sidebar-collapsed #show-sidebar-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.db-toggle {
+    background-color: #f3f4f618;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    transition: background-color 0.25s cubic-bezier(0.4,0,0.2,1), border-color 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s;
+}
+.db-toggle:hover {
+    background-color: #f6f7fa70; /* Muy sutil, apenas más claro */
+    border-color: #e5e7eb;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+body.dark .db-toggle {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    box-shadow: none;
+}
+body.dark .db-toggle:hover {
+    background-color: #323846 !important; /* Sutil en dark */
+    border-color: #4b5563 !important;
+}
+.relation-label {
+    display: none;
+}
+.relation-line-group:hover .relation-label {
+    display: block;
+}
+.db-node.selected {
+    outline: 5px solid #6366f1 !important;
+    z-index: 20;
+}
+#custom-context-menu {
+    position: fixed;
+    z-index: 9999;
+    min-width: 140px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 0.12);
+    padding: 0.15rem 0;
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+}
+#custom-context-menu.dark {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+#custom-context-menu button {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.35rem 0.75rem 0.35rem 0.5rem;
+    font-size: 0.92rem;
+    color: inherit;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+#custom-context-menu button svg {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+#custom-context-menu button:hover {
+    background: #f3f4f6;
+}
+#custom-context-menu.dark button:hover {
+    background: #334155;
+}
+.canvas-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #374151;
+  color: #c7d2fe;
+  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 0.18);
+  border: none;
+  outline: none;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s;
+  padding: 0;
+}
+.canvas-fab svg {
+  display: block;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+.canvas-fab:hover, .canvas-fab:focus {
+  background: #6366f1;
+  color: #fff;
+  box-shadow: 0 6px 24px 0 rgb(99 102 241 / 0.18);
+}
+body.dark .canvas-fab {
+  background: #23293a;
+  color: #a5b4fc;
+}
+body.dark .canvas-fab:hover, body.dark .canvas-fab:focus {
+  background: #6366f1;
+  color: #fff;
+}
+
+/* --- Mejorar el aspecto de la barra deslizante (scrollbar) para todo el app --- */
+body, #canvas-container, #db-toggles, .db-toggle, .properties-container {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #e5e7eb00; /* thumb color, track color */
+}
+
+body::-webkit-scrollbar, #canvas-container::-webkit-scrollbar, #db-toggles::-webkit-scrollbar, .db-toggle::-webkit-scrollbar, .properties-container::-webkit-scrollbar {
+  width: 10px;
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-thumb, #canvas-container::-webkit-scrollbar-thumb, #db-toggles::-webkit-scrollbar-thumb, .db-toggle::-webkit-scrollbar-thumb, .properties-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1 40%, #818cf8 100%);
+  border-radius: 8px;
+  min-height: 40px;
+  border: 2px solid #e5e7eb;
+}
+body::-webkit-scrollbar-thumb:hover, #canvas-container::-webkit-scrollbar-thumb:hover, #db-toggles::-webkit-scrollbar-thumb:hover, .db-toggle::-webkit-scrollbar-thumb:hover, .properties-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4f46e5 40%, #6366f1 100%);
+}
+body::-webkit-scrollbar-corner, #canvas-container::-webkit-scrollbar-corner, #db-toggles::-webkit-scrollbar-corner, .db-toggle::-webkit-scrollbar-corner, .properties-container::-webkit-scrollbar-corner {
+  background: #e5e7eb;
+}
+
+/* Dark mode */
+body.dark, .dark #canvas-container, .dark #db-toggles, .dark .db-toggle, .dark .properties-container {
+  scrollbar-color: #818cf8 #1e293b;
+}
+body.dark::-webkit-scrollbar, .dark #canvas-container::-webkit-scrollbar, .dark #db-toggles::-webkit-scrollbar, .dark .db-toggle::-webkit-scrollbar, .dark .properties-container::-webkit-scrollbar {
+  background: #1e293b;
+}
+body.dark::-webkit-scrollbar-thumb, .dark #canvas-container::-webkit-scrollbar-thumb, .dark #db-toggles::-webkit-scrollbar-thumb, .dark .db-toggle::-webkit-scrollbar-thumb, .dark .properties-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #818cf8 40%, #6366f1 100%);
+  border: 2px solid #1e293b;
+}
+body.dark::-webkit-scrollbar-thumb:hover, .dark #canvas-container::-webkit-scrollbar-thumb:hover, .dark #db-toggles::-webkit-scrollbar-thumb:hover, .dark .db-toggle::-webkit-scrollbar-thumb:hover, .dark .properties-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6366f1 40%, #4f46e5 100%);
+}
+body.dark::-webkit-scrollbar-corner, .dark #canvas-container::-webkit-scrollbar-corner, .dark #db-toggles::-webkit-scrollbar-corner, .dark .db-toggle::-webkit-scrollbar-corner, .dark .properties-container::-webkit-scrollbar-corner {
+  background: #1e293b;
+}
+#db-toggles {
+  padding-right: 12px; /* Espacio extra para que la barra deslizante no tape el contenido */
+}

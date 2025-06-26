@@ -1215,7 +1215,7 @@ function connectToNotionAndFetchDatabases(token) {
     }
     feedbackDiv.innerHTML = `<span class='text-xs text-gray-700 dark:text-gray-300'>Conectando con Notion...</span>`;
 
-    fetch('http://127.0.0.1:5001/notion/databases', {
+    fetch('https://graphicnotion.onrender.com/notion/databases', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token })

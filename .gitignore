@@ -1,0 +1,24 @@
+# Entorno virtual de Python
+venv/
+.env
+
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+
+# Archivos temporales de sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Archivos de log
+*.log
+
+# Archivos de despliegue
+*.sqlite3
+
+# Node modules (por si usas Node en el futuro)
+node_modules/ 

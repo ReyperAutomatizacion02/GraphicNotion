@@ -1,0 +1,1 @@
+web: gunicorn notion_proxy:app 
